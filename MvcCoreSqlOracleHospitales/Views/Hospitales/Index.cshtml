@@ -1,0 +1,54 @@
+﻿@model List<Hospital>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID HOSPITAL</th>
+            <th>NOMBRE</th>
+            <th>DIRECCION</th>
+            <th>TELEFONO</th>
+            <th>CAMAS</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.IdHospital</td>
+            <td>@item.Nombre</td>
+            <td>@item.Direccion</td>
+            <td>@item.Telefono</td>
+            <td>@item.Camas</td>
+            <td>
+                <a asp-controller="Hospitales"
+                   asp-action="Details"
+                   asp-route-id="@item.IdHospital"
+                   class="btn btn-info">
+                    Details
+                </a> 
+                <a asp-controller="Hospitales"
+                   asp-action="Update"
+                   asp-route-id="@item.IdHospital"
+                   class="btn btn-success">
+                    Edit
+                </a>
+                <a asp-controller="Hospitales"
+                   asp-action="Delete"
+                   asp-route-id="@item.IdHospital"
+                   class="btn btn-danger">
+                    Delete
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
